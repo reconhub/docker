@@ -2,6 +2,8 @@ FROM rocker/verse
 
 # RUN apt-get update
 
+RUN adduser --disabled-password --gecos "" guest
+
 RUN echo 'options(repos = c(CRAN = "http://cran.ma.imperial.ac.uk"))' > ~/.Rprofile
 
 RUN r -e "install.packages('outbreaks', dependencies = c('Depends', 'Imports', 'Suggests'))"
