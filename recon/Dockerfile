@@ -1,9 +1,9 @@
 FROM rocker/verse
 
+MAINTAINER Thibaut Jombart <thibautjombart@gmail.com>
+
 RUN apt-get update
-
-
-
+RUN apt-get upgrade -y
 
 
 
@@ -16,9 +16,6 @@ RUN chmod a+rw /usr/local/lib/R/site-library -R
 
 
 
-
-
-
 ## install CRAN packages
 
 RUN echo 'options(download.file.method = "libcurl", repos = c(CRAN = "https://cran.ma.imperial.ac.uk"))' > ~/.Rprofile
@@ -26,9 +23,6 @@ RUN echo 'options(download.file.method = "libcurl", repos = c(CRAN = "https://cr
 RUN r -e "install.packages('outbreaks', dependencies = c('Depends', 'Imports', 'Suggests'))"
 
 RUN r -e "install.packages('incidence', dependencies = c('Depends', 'Imports', 'Suggests'))"
-
-
-
 
 
 
@@ -53,9 +47,6 @@ RUN r -e "devtools::install_github('reconhub/epicontacts.ui', dependencies = c('
 
 
 
-
-
-
 ## clone repos to get sources
 
 RUN su guest
@@ -76,6 +67,4 @@ RUN git clone https://github.com/reconhub/epicontacts.ui
 
 
 WORKDIR /home/guest/
-
-
-
+RUN ls='ls --color=auto'
