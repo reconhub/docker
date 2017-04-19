@@ -95,9 +95,6 @@ where `[image]` is the docker image you want to use.
 Available docker images
 -----------------------
 
-For a list of available images, go to:
-https://hub.docker.com/u/reconhub/dashboard/
-
 ### Default image: `reconhub/recon`
 
 #### Description
