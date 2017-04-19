@@ -15,7 +15,7 @@ For a list of available images, go to:
 https://hub.docker.com/u/reconhub/dashboard/
 
 
-To start the docker image, type:
+To start the docker image with a `bash` shell, type:
 ```
 docker run --rm -it --user guest [image] /bin/bash
 ```
@@ -30,21 +30,22 @@ Available docker images
 
 ### `reconhub/recon`
 
-#### Start the image
-
-These commands should be started from a terminal.
+#### Start the image: `bash`
 
 To start a `bash` session as 'guest', type:
 ```
 docker run --rm -it --user guest reconhub/recon /bin/bash
 ```
 
-To start a Rstudio server running in the background, accessible from a web-browser, type:
+#### Start the image: *Rstudio* server
+
+To start a Rstudio server permitting to run Rstudio within a web-browser, type:
 ```
 docker run -d -p 8787:8787 reconhub/recon
 ```
 
-And then open a web browser and go to the URL `127.0.0.1:8787` (or `localhost:8787`).
+And then open a web browser and go to the URL `127.0.0.1:8787` (or
+`localhost:8787`). The login and password are 'rstudio'.
 
 
 
