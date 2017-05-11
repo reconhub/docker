@@ -1,10 +1,9 @@
-FROM rocker/verse
+FROM rocker/drd
 
 MAINTAINER Thibaut Jombart <thibautjombart@gmail.com>
 
 RUN apt-get update && apt-get upgrade -y
-
-
+RUN apt-get install libssl-dev libxml2-dev pandoc pandoc-citeproc libblas-dev liblapack-dev git qpdf -y
 
 ## add guest user
 
@@ -14,23 +13,22 @@ RUN chmod a+rw /usr/local/lib/R/site-library -R
 
 
 
-## install devel 'devtools': needed by 'plotly' (?!)
-RUN r -e "devtools::install_github('hadley/ggplot2')"
-
-
 ## install CRAN packages
 
 RUN echo 'options(download.file.method = "libcurl", repos = c(CRAN = "https://cran.ma.imperial.ac.uk"))' > ~/.Rprofile
 
-RUN r -e "install.packages('outbreaks', dependencies = c('Depends', 'Imports', 'Suggests'))" \
- && r -e "install.packages('incidence', dependencies = c('Depends', 'Imports', 'Suggests'))" \
- && r -e "install.packages('epicontacts', dependencies = c('Depends', 'Imports', 'Suggests'))"
-
+RUN r -e "install.packages('devtools')" \
+ && r -e "install.packages('roxygen2')" \
+ && r -e "install.packages('testthat')" \
+ && r -e "install.packages('rmarkdown')" \
 
 
 ## install devel packages (github)
 
-RUN r -e "devtools::install_github('reconhub/outbreaker2', dependencies = c('Depends', 'Imports', 'Suggests'))" \
+RUN r -e "devtools::install_github('reconhub/outbreaks', dependencies = c('Depends', 'Imports', 'Suggests'))" \
+ && r -e "devtools::install_github('reconhub/incidence', dependencies = c('Depends', 'Imports', 'Suggests'))" \
+ && r -e "devtools::install_github('reconhub/epicontacts', dependencies = c('Depends', 'Imports', 'Suggests'))" \
+ && r -e "devtools::install_github('reconhub/outbreaker2', dependencies = c('Depends', 'Imports', 'Suggests'))" \
  && r -e "devtools::install_github('reconhub/distcrete', dependencies = c('Depends', 'Imports', 'Suggests'))" \
  && r -e "devtools::install_github('reconhub/vimes', dependencies = c('Depends', 'Imports', 'Suggests'))" \
  && r -e "devtools::install_github('reconhub/shinyHelpers', dependencies = c('Depends', 'Imports', 'Suggests'))" \

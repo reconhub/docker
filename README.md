@@ -108,7 +108,7 @@ sources for testing. It is based on
 
 #### Content summary
 
-- CRAN packages: *outbreaks*, *incidence*
+- CRAN packages: *outbreaks*, *incidence*, *epicontacts*
 
 - github packages: *epicontacts*, *distcrete*, *outbreaker2*, *vimes*,
 *shinyHelpers*, *recon.ui*, *incidence.ui*, *epicontacts.ui*
@@ -120,6 +120,30 @@ sources for testing. It is based on
 
 
 
+### Devel image: `reconhub/devel`
+
+#### Description
+
+This image designed for testing is based on daily snapshots of R-devel and
+Rstudio packages from
+[rocker/rstudio-daily](https://hub.docker.com/r/rocker/rstudio-daily). It also
+contains all the sources of the packages cloned from github.
+
+
+**Note**: unless you need to test a package on R-devel, prefer using the more
+  reliable default image (reconhub/recon).
+
+
+
+#### Content summary
+
+- github packages: *outbreaks*, *incidence*, *epicontacts*, *distcrete*,
+*outbreaker2*, *vimes*, *shinyHelpers*, *recon.ui*, *incidence.ui*,
+*epicontacts.ui*
+
+- users: 'guest' (for bash session) and 'rstudio' (for Rstudio session) 
+
+- package sources: git-cloned in `/home/guest/dev/`
 
 
 
