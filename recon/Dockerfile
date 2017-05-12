@@ -15,7 +15,9 @@ RUN chmod a+rw /usr/local/lib/R/site-library -R
 
 
 ## install devel 'devtools': needed by 'plotly' (?!)
-RUN r -e "devtools::install_github('hadley/ggplot2')"
+RUN r -e "devtools::install_github('hadley/ggplot2')" \
+ && r -e "devtools::install_github('ropensci/plotly')"
+
 
 
 ## install CRAN packages

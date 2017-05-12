@@ -95,6 +95,9 @@ where `[image]` is the docker image you want to use.
 Available docker images
 -----------------------
 
+A list of available images can be found from the [RECON docker repository](https://hub.docker.com/u/reconhub/dashboard/).
+
+
 ### Default image: `reconhub/recon`
 
 #### Description
@@ -124,9 +127,8 @@ sources for testing. It is based on
 
 #### Description
 
-This image designed for testing is based on daily snapshots of R-devel and
-Rstudio packages from
-[rocker/rstudio-daily](https://hub.docker.com/r/rocker/rstudio-daily). It also
+This image designed for testing is based on daily snapshots of R-devel from
+[rocker/drd](https://hub.docker.com/r/rocker/drd). It also
 contains all the sources of the packages cloned from github.
 
 
@@ -141,7 +143,7 @@ contains all the sources of the packages cloned from github.
 *outbreaker2*, *vimes*, *shinyHelpers*, *recon.ui*, *incidence.ui*,
 *epicontacts.ui*
 
-- users: 'guest' (for bash session) and 'rstudio' (for Rstudio session) 
+- users: 'guest' (for bash session)
 
 - package sources: git-cloned in `/home/guest/dev/`
 
